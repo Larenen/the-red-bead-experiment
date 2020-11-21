@@ -1,10 +1,10 @@
 import './css/bead.css'
 import React from 'react';
+import whiteBead from '../white-bead.png';
+import redBead from '../red-bead.png';
 
 export default function Bead(props){
-    const beadImages = ['red-bead.png', 'white-bead.png']
-
     return(
-        <img className="bead" style={{ gridColumnStart: props.column, gridColumnEnd: props.column, gridRowStart:props.row, gridRowEnd:props.row }} alt="bead" src={beadImages[props.beadColorIndex]}/>
+        <img className="bead" style={{ gridColumnStart: props.column, gridColumnEnd: props.column, gridRowStart:props.row, gridRowEnd:props.row }} alt="bead" src={props.beadColorIndex === 0 ? redBead : whiteBead}/>
     )
 }

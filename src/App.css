@@ -19,7 +19,7 @@
 }
 
 .button:active {
-    background: linear-gradient(#1488CC, #2B32B2);
+    background: linear-gradient(#0180ca, #0009b1);
     box-shadow: 0 2px rgb(196, 196, 196);
     transform: translateY(4px);
     color: #fff;

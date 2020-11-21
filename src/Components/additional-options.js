@@ -12,7 +12,7 @@ export default function AdditionalOptions() {
             </div>
             <div className="option">
                 <input id="shake" type="checkbox"/>
-                <label for="shake">Zatrzęś szpachelką</label>
+                <label for="shake">Zatrzęś tacką</label>
             </div>
             <div className="option">
                 <input id="right" type="checkbox"/>

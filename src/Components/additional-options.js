@@ -1,34 +1,41 @@
 import "./css/additional-options.css"
+import React, {useState} from "react"
 
-export default function AdditionalOptions() {
+export default function AdditionalOptions(props) {
+    const [right, setRight] = useState(false);
+    const [left, setLeft] = useState(false);
+    const [down, setDown] = useState(false);
+    const [up, setUp] = useState(false);
+
     return (
         <div className="options">
-            <h1>
-            Przed losowaniem:
-            </h1>
             <div className="option">
-                <input id="mix" type="checkbox"/>
-                <label for="mix">Zamieszaj kulki</label>
+                <input id="right" type="checkbox" checked={right} onChange={(e) => {
+                    setRight(e.target.checked);
+                    props.setSecondPassed(e.target.checked || left || down || up);
+                }} disabled={!props.isEnabled}/>
+                <label htmlFor="right">Przechyl w prawo</label>
             </div>
             <div className="option">
-                <input id="shake" type="checkbox"/>
-                <label for="shake">Zatrzęś tacką</label>
+                <input id="left" type="checkbox" checked={left} onChange={(e) => {
+                    setLeft(e.target.checked);
+                    props.setSecondPassed(right || e.target.checked || down || up);
+                }}disabled={!props.isEnabled}/>
+                <label htmlFor="left">Przechyl w lewo</label>
             </div>
             <div className="option">
-                <input id="right" type="checkbox"/>
-                <label for="right">Przechyl w prawo</label>
+                <input id="down" type="checkbox" checked={down} onChange={(e) => {
+                    setDown(e.target.checked);
+                    props.setSecondPassed(right || left || e.target.checked || up);
+                }}disabled={!props.isEnabled}/>
+                <label htmlFor="down">Przechyl w dół</label>
             </div>
             <div className="option">
-                <input id="left" type="checkbox"/>
-                <label for="left">Przechyl w lewo</label>
-            </div>
-            <div className="option">
-                <input id="down" type="checkbox"/>
-                <label for="down">Przechyl w dół</label>
-            </div>
-            <div className="option">
-                <input id="up" type="checkbox"/>
-                <label for="up">Przechyl w górę</label>
+                <input id="up" type="checkbox" checked={up} onChange={(e) =>{
+                    setUp(e.target.checked);
+                    props.setSecondPassed(right || left || down || e.target.checked);
+                }} disabled={!props.isEnabled}/>
+                <label htmlFor="up">Przechyl w górę</label>
             </div>
         </div>
     )

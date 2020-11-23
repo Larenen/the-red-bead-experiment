@@ -25,6 +25,29 @@
     color: #fff;
 }
 
+.button:disabled {
+    background: linear-gradient(#4ea1d1, #5257b1);
+    box-shadow: 0 2px rgb(196, 196, 196);
+    transform: translateY(4px);
+    color: #fff;
+}
+
 .App {
     margin-bottom: 20px
 }
+
+h1 {
+    text-align: center;
+    color: #4658a8;
+}
+
+html {
+    box-sizing: border-box;
+  }
+  
+  * {
+    box-sizing: inherit;
+  }
+  *:before, *:after {
+    box-sizing: inherit;
+  }

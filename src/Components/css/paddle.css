@@ -7,3 +7,8 @@
     background: radial-gradient(circle, #485563,#29323c);
     border-radius: 20px;
 }
+
+.bead {
+    width: 30px;
+    margin: 15px;
+}

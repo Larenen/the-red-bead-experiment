@@ -49,11 +49,12 @@ function updatePaddle() {
 
 function shakePaddle(beadsArray) {
     let arrayCopy = [...beadsArray]
-    const beadsToChange = getRndInteger(1,5);
-    for(let i = 0; i < beadsToChange; i++){
+    //const beadsToChange = getRndInteger(1,5);
+    //for(let i = 0; i < beadsToChange; i++){
         const randomBeadToChange = getRndInteger(0, items - 1);
-        arrayCopy[randomBeadToChange] = <img key={randomBeadToChange} className="bead" alt="bead" src={getRandomBeadColor() === 0 ? redBead : whiteBead}/>
-    }
+        const isRed = arrayCopy[randomBeadToChange].props.src.includes("media/red");
+        arrayCopy[randomBeadToChange] = <img key={randomBeadToChange} className="bead" alt="bead" src={isRed ? whiteBead : redBead} />
+    //}
 
     return arrayCopy;
 }

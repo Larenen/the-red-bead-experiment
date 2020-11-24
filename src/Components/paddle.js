@@ -1,5 +1,5 @@
 import "./css/paddle.css"
-import React, { useState } from 'react';
+import React from 'react';
 import whiteBead from '../white-bead.png';
 import redBead from '../red-bead.png';
 import emptyHole from '../empty-hole.png';
@@ -9,25 +9,20 @@ const weights = [0.2, 0.8]; // probabilities
 const results = [0, 1]; // values to return
 
 export default function Paddle(props) {
-    const [beads, setBeads] = useState(initPaddle());
-    const [thirdPassed, setThirdPassed] = useState(false);
-
     return(
         <div>
             <button className="button" disabled={!props.isEnabled} onClick={ () => {
-                setBeads(updatePaddle());
-                setThirdPassed(true);
+                props.setBeads(updatePaddle());
+                props.setStepPassed(true);
                 } }>Losuj</button>
             <div className="container">
-                {beads}
+                {props.beads}
             </div>
-            <h1>Krok czwarty:</h1>
-            <button className="button" disabled={!thirdPassed} onClick={() => setBeads(shakePaddle(beads))}>Potrząśnij tacką</button>
         </div>
     )
 }
 
-function initPaddle() {
+export function initPaddle() {
     let beads = []
 
     for(let i = 0; i < items; i++) {
@@ -47,14 +42,13 @@ function updatePaddle() {
     return beads;
 }
 
-function shakePaddle(beadsArray) {
+export function shakePaddle(beadsArray) {
     let arrayCopy = [...beadsArray]
-    //const beadsToChange = getRndInteger(1,5);
-    //for(let i = 0; i < beadsToChange; i++){
+    for(let i = 0; i < 2; i++){
         const randomBeadToChange = getRndInteger(0, items - 1);
         const isRed = arrayCopy[randomBeadToChange].props.src.includes("media/red");
         arrayCopy[randomBeadToChange] = <img key={randomBeadToChange} className="bead" alt="bead" src={isRed ? whiteBead : redBead} />
-    //}
+    }
 
     return arrayCopy;
 }
